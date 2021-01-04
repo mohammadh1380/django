@@ -1,0 +1,32 @@
+<html lang="fa" dir="ltr">
+{% extends 'blog/base.html' %}
+
+{% block title %} | {{article.title}}{% endblock %}
+
+{% block main %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{ article.thumbail.url}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{article.title}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          {{article.description | linebreaks}}
+        </div>
+      </div>
+    </div>
+  </article>
+{% endblock %}
+</html>
