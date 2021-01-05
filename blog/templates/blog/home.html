@@ -33,6 +33,11 @@
           <p class="post-meta">نوشته شده توسط
             <a href="#">حامد</a>
             {{article.jpublish}}</p>
+          <div>
+            {% for cat in article.category.all %}
+              <a href="#">#{{cat.title}}</a>
+            {% endfor %}
+          </div>
         </div>
         <hr>
         {% endfor %}
