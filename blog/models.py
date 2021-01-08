@@ -3,6 +3,12 @@ from django.utils import timezone
 from extensions.utils import jalali_converter
 
 
+# my managers
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
+
+
 # Create your models here.
 
 class Category(models.Model):
@@ -50,3 +56,5 @@ class Article(models.Model):
 
     def category_published(self):
         return self.category.filter(status=True)
+
+    objects = ArticleManager()

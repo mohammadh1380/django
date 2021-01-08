@@ -24,8 +24,15 @@ body {
     text-align: left;
 }
 
+.post-preview > a > .post-title {
+    font-size: 32px;
+}
+
+
+
 .post-title {
     text-align: center;
+    font-size: 32px;
 }
 
 .pager-botton {
@@ -34,4 +41,8 @@ body {
 
 .navbar-brand {
     font-size: 42px;
+}
+
+.post-subtitle {
+    font-size: 20px;
 }
