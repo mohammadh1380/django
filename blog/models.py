@@ -1,3 +1,4 @@
+from django.utils.html import format_html
 from django.db import models
 from django.utils import timezone
 from extensions.utils import jalali_converter
@@ -8,6 +9,9 @@ class ArticleManager(models.Manager):
     def published(self):
         return self.filter(status='p')
 
+class CategoryManager(models.Manager):
+    def active(self):
+        return self.filter(status=True)
 
 # Create your models here.
 
@@ -25,6 +29,8 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    objects = CategoryManager()
 
 
 class Article(models.Model):
@@ -57,5 +63,8 @@ class Article(models.Model):
 
     def category_published(self):
         return self.category.filter(status=True)
+
+    def thumbail_tag(self):
+        return format_html("<img width=100 height=75 style='border-radius: 5px;' src='{}'>".format(self.thumbail.url))
 
     objects = ArticleManager()

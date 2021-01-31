@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <h3 class="alert alert-primary text-center">دسته‌بندی: {{category.title}}</h3>
-        {% for article in articles %}
+        {% for article in object_list %}
         <div class="post-preview">
           <a href="{% url 'blog:detail' article.slug %}">
             <h2 class="post-title">
@@ -44,11 +44,15 @@
         {% endfor %}
         <!-- Pager -->
         <div class="clearfix pager-botton">
-          {% if articles.has_previous %}
-            <a class="btn btn-primary float-right ml-3" href="{% url 'blog:home' articles.previous_page_number %}"> پست‌های جدید &rarr;</a>
-          {% endif %}
-          {% if articles.has_next %}
-            <a class="btn btn-primary float-right" href="{% url 'blog:home' articles.next_page_number %}"> پست‌های قدیمی &larr;</a>
+          {% if is_paginated %}
+            <div class="clearfix pager-botton">
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-primary float-right ml-3" href="{% url 'blog:category' category.slug page_obj.previous_page_number %}"> پست‌های جدید &rarr;</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a class="btn btn-primary float-right" href="{% url 'blog:category' category.slug page_obj.next_page_number %}"> پست‌های قدیمی &larr;</a>
+                {% endif %}
+            </div>
           {% endif %}
         </div>
       </div>
